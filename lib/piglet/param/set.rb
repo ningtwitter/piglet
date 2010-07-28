@@ -10,7 +10,7 @@ module Piglet
       def to_s
         case @value
         when String, Symbol
-          v = "'#{escape(@value)}"
+          v = "'#{escape(@value)}'"
         else
           v = @value
         end
