@@ -14,7 +14,7 @@ module Piglet
         else
           v = @value
         end
-        "set #{@name} #{v}"
+        "SET #{@name} #{v}"
       end
     end
   end
