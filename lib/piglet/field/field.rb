@@ -4,7 +4,7 @@ module Piglet
   module Field
     module Field # :nodoc:
       SYMBOLIC_OPERATORS = [:==, :>, :<, :>=, :<=, :%, :+, :-, :*, :/]
-      FUNCTIONS = [:avg, :count, :max, :min, :size, :sum, :tokenize]
+      FUNCTIONS = [:avg, :count, :max, :min, :size, :sum, :tokenize, :flatten]
 
       attr_reader :name, :type, :predecessors
     
@@ -86,6 +86,20 @@ module Piglet
         @predecessors ||= []
       end
       
+      def field(name)
+        Reference.new(name, self, :explicit_ancestry => true)
+      end
+      
+      def get(key)
+        MapValue.new(key, self)
+      end
+      
+      def [](n)
+        field("\$#{n}")
+      end
+      
+      # These are only valid inside nested foreach blocks
+      
       def distinct
         DirectExpression.new("DISTINCT #{field_alias}", self)
       end
@@ -110,22 +124,6 @@ module Piglet
         context = Relation::BlockContext.new(dummy_relation, @interpreter)
         expression = context.instance_eval(&block)
         DirectExpression.new("FILTER #{field_alias} BY #{expression}", self)
-      end
-      
-      def flatten
-        DirectExpression.new("FLATTEN(#{field_alias})", self)
-      end
-      
-      def field(name)
-        Reference.new(name, self, :explicit_ancestry => true)
-      end
-      
-      def get(key)
-        MapValue.new(key, self)
-      end
-      
-      def [](n)
-        field("\$#{n}")
       end
     
     protected

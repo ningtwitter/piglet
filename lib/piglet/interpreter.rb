@@ -109,6 +109,14 @@ module Piglet
       @top_level_statements << Udf::Register.new(path)
     end
     
+    # SET
+    #
+    #   set(:my_var, 'value')                   # => set my_var 'value'
+    #   set('quote', "He said 'hello!")         # => set quote 'He said \'hello!\'
+    def set(name, value, options=nil)
+      @top_level_statements << Param::Set.new(name, value, options)
+    end
+    
     # DEFINE
     #
     #   define('test', :function => 'com.example.Test')             # => DEFINE test com.example.Test

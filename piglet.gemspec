@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Theo Hultberg"]
-  s.date = %q{2010-07-09}
+  s.date = %q{2010-07-28}
   s.default_executable = %q{piglet}
   s.description = %q{Piglet aims to look like Pig Latin while allowing for things like loops and control of flow that are missing from Pig.}
   s.email = %q{theo@iconara.net}
@@ -51,6 +51,7 @@ Gem::Specification.new do |s|
      "lib/piglet/interpreter.rb",
      "lib/piglet/param/declare.rb",
      "lib/piglet/param/default.rb",
+     "lib/piglet/param/set.rb",
      "lib/piglet/param/parameter_statement.rb",
      "lib/piglet/relation/block_context.rb",
      "lib/piglet/relation/cogroup.rb",

@@ -69,6 +69,7 @@ module Piglet # :nodoc:
   module Param
     autoload :Declare, 'piglet/param/declare'
     autoload :Default, 'piglet/param/default'
+    autoload :Set, 'piglet/param/set'
     autoload :ParameterStatement, 'piglet/param/parameter_statement'
   end
 end
