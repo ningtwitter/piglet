@@ -4,7 +4,17 @@ module Piglet
       include ParameterStatement
       def initialize(name, value, options=nil)
         options ||= {}
-        @kind, @name, @value, @backticks = 'set', name, value, options[:backticks]
+        @name, @value = name, value
+      end
+      
+      def to_s
+        case @value
+        when String, Symbol
+          v = "'#{escape(@value)}"
+        else
+          v = @value
+        end
+        "set #{@name} #{v}"
       end
     end
   end
