@@ -19,7 +19,8 @@ module Piglet
   
       # GROUP
       #
-      #   x.group(:a)                           # => GROUP x By a
+      #   x.group()                             # => GROUP x ALL
+      #   x.group(:a)                           # => GROUP x BY a
       #   x.group(:a, :b, :c)                   # => GROUP x BY (a, b, c)
       #   x.group([:a, :b, :c], :parallel => 3) # => GROUP x BY (a, b, c) PARALLEL 3
       def group(*args)

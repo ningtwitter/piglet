@@ -8,13 +8,7 @@ module Piglet
       end
       
       def to_s
-        case @value
-        when String, Symbol
-          v = "'#{escape(@value)}'"
-        else
-          v = @value
-        end
-        "SET #{@name} #{v}"
+        "SET #{@name} #{@value}"
       end
     end
   end

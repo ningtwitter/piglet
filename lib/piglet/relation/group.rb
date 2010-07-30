@@ -27,11 +27,13 @@ module Piglet
       end
     
       def to_s
-        str = "GROUP #{@sources.first.alias} BY "
+        str = "GROUP #{@sources.first.alias}"
         if @grouping.size > 1
-          str << "(#{@grouping.join(', ')})"
+          str << " BY (#{@grouping.join(', ')})"
+        elsif @grouping.size == 1
+          str << " BY #{@grouping.first.to_s}"
         else
-          str << @grouping.first.to_s
+          str << " ALL"
         end
         str << " PARALLEL #{@parallel}" if @parallel
         str
