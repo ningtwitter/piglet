@@ -11,7 +11,7 @@ module Piglet
       end
       
       def name
-        @schema.size > 0 ? "(#{schema_string})" : "#{schema_string}"
+        @schema.size > 1 ? "(#{schema_string})" : "#{schema_string}"
       end
       
       def schema_string
