@@ -119,7 +119,7 @@ module Piglet
       # Ruby 1.8 the order of the keys cannot be guaranteed.
       def order(*args)
         fields, options = split_at_options(args)
-        fields = *fields
+        # fields = *fields
         Order.new(self, @interpreter, fields, options)
       end
   

@@ -100,7 +100,7 @@ module Piglet
       
       def order(*args)
         fields, options = split_at_options(args)
-        fields = *fields
+        # fields = *fields
         expression = Relation::Order.new(self, @interpreter, fields, options).to_s
         DirectExpression.new(expression, self)
       end
@@ -113,7 +113,7 @@ module Piglet
       end
       
       def flatten
-        DirectExpression.new("FLATTEN(#{field_alias})", self)
+        DirectExpression.new("FLATTEN(#{name})", self)
       end
       
       def field(name)
